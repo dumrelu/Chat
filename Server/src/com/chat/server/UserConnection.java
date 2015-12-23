@@ -53,6 +53,16 @@ public class UserConnection implements PacketReceiverSubscriber
         return m_socket;
     }
     
+    public UserData getUserData()
+    {
+        return m_userData;
+    }
+    
+    public void setUserData(UserData userData)
+    {
+        m_userData = userData;
+    }
+    
     public void close() throws IOException
     {
         m_sender.stop();
