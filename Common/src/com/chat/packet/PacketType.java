@@ -17,6 +17,7 @@ public enum PacketType
     MESSAGE_CONNECT,    //A user has connected to the server.
     MESSAGE_DISCONNECT, //A user has disconnected from the server.
     MESSAGE_UPDATE,     //A user changed its data.
+    MESSAGE_LIST,       //A user requests the data for all the connected users.
     MESSAGE_CHAT,       //A user sent a chat message(private or broadcast).
     MESSAGE_ERROR,      //An error has occured when executing a command.
 }
