@@ -163,7 +163,8 @@ public class UserConnection implements PacketReceiverSubscriber
     
     private void onQuitCommand(QuitCommand quit) throws IOException
     {
-        m_table.removeUser(m_userData);
+        if(m_userData != null)
+            m_table.removeUser(m_userData);
         close();
     }
     
