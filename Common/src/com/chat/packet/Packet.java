@@ -1,4 +1,4 @@
-package com.chat.common;
+package com.chat.packet;
 
 /**
  *  The interface the client and server use to 

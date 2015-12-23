@@ -1,4 +1,4 @@
-package com.chat.common;
+package com.chat.packet;
 
 /**
  *  Types of packets that are used to communicate between
