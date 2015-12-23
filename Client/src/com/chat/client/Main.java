@@ -1,30 +1,17 @@
 package com.chat.client;
 
+import com.chat.command.ConnectCommand;
+import com.chat.command.QuitCommand;
 import com.chat.constants.Constants;
 import com.chat.packet.Packet;
 import com.chat.packet.io.PacketReceiver;
 import com.chat.packet.io.PacketReceiverSubscriber;
+import com.chat.packet.io.PacketSender;
 import com.chat.test.TestPacket;
+import com.chat.user.UserData;
 import java.io.IOException;
 import java.net.Socket;
-
-class TestSubscriber implements PacketReceiverSubscriber
-{
-    private PacketReceiver m_receiver;
-
-    public TestSubscriber(PacketReceiver m_receiver) 
-    {
-        this.m_receiver = m_receiver;
-    }
-    
-    @Override
-    public void onPacketReceived(Packet packet) 
-    {
-        System.out.println("Message received: " + ((TestPacket) packet).getTestMessage());
-        m_receiver.stop();
-    }
-    
-}
+import java.util.Scanner;
 
 public class Main 
 {
@@ -35,7 +22,20 @@ public class Main
         
         PacketReceiver receiver = new PacketReceiver(socket);
         receiver.start();
-        receiver.subscribe(new TestSubscriber(receiver));
+        receiver.subscribe(new Subscriber());
+        
+        PacketSender sender = new PacketSender(socket);
+        sender.start();
+        
+        CommandParser parser = new CommandParser(sender, receiver);
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine())
+        {
+            parser.process(sc.nextLine());
+            
+            if(parser.getLastCommand().equals("quit"))
+                break;
+        }
     }
     
 }

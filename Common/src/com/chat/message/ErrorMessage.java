@@ -14,6 +14,7 @@ public class ErrorMessage extends Message
     public ErrorMessage(String errorMessage) 
     {
         super(PacketType.MESSAGE_ERROR);
+        m_errorMessage = errorMessage;
     }
     
     public String getErrorMessage()

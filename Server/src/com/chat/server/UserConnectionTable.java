@@ -1,5 +1,6 @@
 package com.chat.server;
 
+import com.chat.message.DisconnectMessage;
 import com.chat.packet.Packet;
 import com.chat.user.UserData;
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class UserConnectionTable
         UserConnection user = m_users.remove(userData.getUsername());
         if(user != null)
         {
+            broadcast(new DisconnectMessage(userData.getUsername()));
             System.out.println("User " + user.getUserData().getUsername() + " disconnected");
             return true;
         }
