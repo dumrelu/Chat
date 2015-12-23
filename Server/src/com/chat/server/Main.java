@@ -34,12 +34,15 @@ public class Main
     public static void main(String[] args) throws IOException 
     {
         ServerSocket serverSocket = new ServerSocket(Constants.PORT);
-        Socket socket = serverSocket.accept();
+        UserConnectionTable table = new UserConnectionTable();
         
-        PacketSender sender = new PacketSender(socket);
-        sender.start();
-        sender.subscribe(new TestSubscriber(sender));
-        sender.send(new TestPacket("Hello world!"));
+        System.out.println("Server started!");
+        while(true)
+        {
+            Socket socket = serverSocket.accept();
+            UserConnection user = new UserConnection(table, socket);
+            System.out.println("User connected!");
+        }
     }
     
 }

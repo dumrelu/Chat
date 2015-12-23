@@ -32,6 +32,7 @@ public class UserConnectionTable
         
         m_users.put(userData.getUsername(), user);
         user.setUserData(userData);
+        System.out.println("User " + userData.getUsername() + " authenticated.");
         return true;
     }
     
@@ -75,6 +76,12 @@ public class UserConnectionTable
     
     public synchronized boolean removeUser(UserData userData)
     {
-        return m_users.remove(userData.getUsername()) != null;
+        UserConnection user = m_users.remove(userData.getUsername());
+        if(user != null)
+        {
+            System.out.println("User " + user.getUserData().getUsername() + " disconnected");
+            return true;
+        }
+        return false;
     }
 }
