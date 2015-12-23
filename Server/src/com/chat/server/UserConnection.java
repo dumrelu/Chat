@@ -9,6 +9,7 @@ import com.chat.message.ChatMessage;
 import com.chat.message.ConnectMessage;
 import com.chat.message.ErrorMessage;
 import com.chat.message.ListMessage;
+import com.chat.message.UpdateMessage;
 import com.chat.packet.Packet;
 import com.chat.packet.io.PacketReceiver;
 import com.chat.packet.io.PacketReceiverSubscriber;
@@ -112,6 +113,12 @@ public class UserConnection implements PacketReceiverSubscriber
     
     private void onConnectCommand(ConnectCommand connect)
     {
+        if(m_userData != null)
+        {
+            m_sender.send(new ErrorMessage("Already connected."));
+            return;
+        }
+        
         if(!m_table.addUser(connect.getUserData(), this))
         {
             m_sender.send(new ErrorMessage("Username already taken."));
@@ -148,7 +155,7 @@ public class UserConnection implements PacketReceiverSubscriber
         ChatMessage chatMessage = new ChatMessage(m_userData.getUsername(), message.getMessage(), message.getDate(), message.isBroadcast());
         String destination = message.getDestination();
         
-        if(destination != null)
+        if(destination == null)
         {
             m_table.broadcast(chatMessage);
         }
@@ -176,9 +183,11 @@ public class UserConnection implements PacketReceiverSubscriber
             return;
         }
         
+        String oldUsername = m_userData.getUsername();
         if(!m_table.update(m_userData, update.getUserData(), this))
         {
             m_sender.send(new ErrorMessage("Username already taken"));
         }
+        m_sender.send(new UpdateMessage(oldUsername, m_userData));
     }
 }

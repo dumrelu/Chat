@@ -76,7 +76,7 @@ public class Subscriber implements PacketReceiverSubscriber
         }
         else
         {
-            System.out.println("Broadcast: " + chat.getSource() + ": "+ chat.getMessage());
+            System.out.println("Broadcast from " + chat.getSource() + ": "+ chat.getMessage());
         }
     }
     

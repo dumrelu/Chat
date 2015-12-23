@@ -3,6 +3,8 @@ package com.chat.client;
 import com.chat.command.ConnectCommand;
 import com.chat.command.ListCommand;
 import com.chat.command.MessageCommand;
+import com.chat.command.QuitCommand;
+import com.chat.command.UpdateCommand;
 import com.chat.packet.io.PacketReceiver;
 import com.chat.packet.io.PacketSender;
 import com.chat.user.UserData;
@@ -50,6 +52,17 @@ public class CommandParser
             case "msg":
                 int nextSpaceIdx = line.indexOf(" ", spaceIdx+1);
                 m_sender.send(new MessageCommand(line.substring(spaceIdx+1, nextSpaceIdx), line.substring(nextSpaceIdx+1)));
+                break;
+            case "bcast":
+                m_sender.send(new MessageCommand(line.substring(spaceIdx+1)));
+                break;
+            case "nick":
+                m_sender.send(new UpdateCommand(new UserData(line.substring(spaceIdx+1))));
+                break;
+            case "quit":
+                m_sender.send(new QuitCommand());
+                m_sender.stop();
+                m_receiver.stop();
                 break;
         }
         

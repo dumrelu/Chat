@@ -48,7 +48,7 @@ public class PacketReceiver extends PacketIOThread
             }
             
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(PacketReceiver.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
     
