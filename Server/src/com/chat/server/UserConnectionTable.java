@@ -72,4 +72,9 @@ public class UserConnectionTable
         user.setUserData(newData);
         return true;
     }
+    
+    public synchronized boolean removeUser(UserData userData)
+    {
+        return m_users.remove(userData.getUsername()) != null;
+    }
 }

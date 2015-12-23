@@ -18,7 +18,7 @@ public class ConnectCommand extends Command
         m_userData = username;
     }
     
-    public UserData getUsername()
+    public UserData getUserData()
     {
         return m_userData;
     }
