@@ -1,6 +1,7 @@
 package com.chat.command;
 
 import com.chat.packet.PacketType;
+import com.chat.user.UserData;
 
 /**
  *  Command send by the user to connect to the server.
@@ -9,16 +10,16 @@ import com.chat.packet.PacketType;
  */
 public class ConnectCommand extends Command
 {
-    private final String m_username;
+    private final UserData m_userData;
     
-    public ConnectCommand(String username) 
+    public ConnectCommand(UserData username) 
     {
         super(PacketType.COMMAND_CONNECT);
-        m_username = username;
+        m_userData = username;
     }
     
-    public String getUsername()
+    public UserData getUsername()
     {
-        return m_username;
+        return m_userData;
     }
 }
