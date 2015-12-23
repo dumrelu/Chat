@@ -46,6 +46,7 @@ public class UserConnection implements PacketReceiverSubscriber
         
         m_sender.start();
         m_receiver.start();
+        m_receiver.subscribe(this);
     }
     
     public PacketSender getPacketSender()
@@ -123,6 +124,12 @@ public class UserConnection implements PacketReceiverSubscriber
     
     private void onListCommand(ListCommand list)
     {
+        if(m_userData == null)
+        {
+            m_sender.send(new ErrorMessage("You need to pick a username first"));
+            return;
+        }
+        
         List<UserData> users = new ArrayList<>();
         for(UserConnection user : m_table.getUsers())
             users.add(user.getUserData());
@@ -132,6 +139,12 @@ public class UserConnection implements PacketReceiverSubscriber
     
     private void onMessageCommand(MessageCommand message)
     {
+        if(m_userData == null)
+        {
+            m_sender.send(new ErrorMessage("You need to pick a username first"));
+            return;
+        }
+        
         ChatMessage chatMessage = new ChatMessage(m_userData.getUsername(), message.getMessage(), message.getDate(), message.isBroadcast());
         String destination = message.getDestination();
         
@@ -156,6 +169,12 @@ public class UserConnection implements PacketReceiverSubscriber
     
     private void onUpdateCommand(UpdateCommand update)
     {
+        if(m_userData == null)
+        {
+            m_sender.send(new ErrorMessage("You need to pick a username first"));
+            return;
+        }
+        
         if(!m_table.update(m_userData, update.getUserData(), this))
         {
             m_sender.send(new ErrorMessage("Username already taken"));
