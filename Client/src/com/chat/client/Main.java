@@ -27,7 +27,7 @@ public class Main
         PacketSender sender = new PacketSender(socket);
         sender.start();
         
-        CommandParser parser = new CommandParser(sender, receiver);
+        /*CommandParser parser = new CommandParser(sender, receiver);
         Scanner sc = new Scanner(System.in);
         while(sc.hasNextLine())
         {
@@ -36,6 +36,7 @@ public class Main
             if(parser.getLastCommand().equals("quit"))
                 break;
         }
+                */
     }
     
 }

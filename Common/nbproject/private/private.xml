@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/command/Command.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/command/ConnectCommand.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/PacketType.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/io/PacketReceiver.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/Packet.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/message/ErrorMessage.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/message/Message.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/command/MessageCommand.java</file>
+        </group>
+    </open-files>
+</project-private>

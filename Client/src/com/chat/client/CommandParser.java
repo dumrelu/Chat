@@ -5,7 +5,6 @@ import com.chat.command.ListCommand;
 import com.chat.command.MessageCommand;
 import com.chat.command.QuitCommand;
 import com.chat.command.UpdateCommand;
-import com.chat.packet.io.PacketReceiver;
 import com.chat.packet.io.PacketSender;
 import com.chat.user.UserData;
 
@@ -15,14 +14,12 @@ import com.chat.user.UserData;
  */
 public class CommandParser 
 {
-    private PacketSender m_sender;
-    private PacketReceiver m_receiver;
+    private final PacketSender m_sender;
     private String m_lastCommand;
     
-    public CommandParser(PacketSender sender, PacketReceiver receiver)
+    public CommandParser(PacketSender sender)
     {
         m_sender = sender;
-        m_receiver = receiver;
     }
     
     public void process(String line)
@@ -61,8 +58,6 @@ public class CommandParser
                 break;
             case "quit":
                 m_sender.send(new QuitCommand());
-                m_sender.stop();
-                m_receiver.stop();
                 break;
         }
         

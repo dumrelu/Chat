@@ -152,7 +152,7 @@ public class UserConnection implements PacketReceiverSubscriber
             return;
         }
         
-        ChatMessage chatMessage = new ChatMessage(m_userData.getUsername(), message.getMessage(), message.getDate(), message.isBroadcast());
+        ChatMessage chatMessage = new ChatMessage(m_userData.getUsername(), message.getDestination(), message.getMessage(), message.getDate());
         String destination = message.getDestination();
         
         if(destination == null)
@@ -164,6 +164,10 @@ public class UserConnection implements PacketReceiverSubscriber
             if(!m_table.send(destination, chatMessage))
             {
                 m_sender.send(new ErrorMessage("Username " + destination + " is invalid."));
+            }
+            else
+            {
+                m_sender.send(chatMessage);
             }
         }
     }
@@ -188,6 +192,6 @@ public class UserConnection implements PacketReceiverSubscriber
         {
             m_sender.send(new ErrorMessage("Username already taken"));
         }
-        m_sender.send(new UpdateMessage(oldUsername, m_userData));
+        m_table.broadcast(new UpdateMessage(oldUsername, m_userData));
     }
 }
