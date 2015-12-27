@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/command/Command.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/io/PacketSender.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/command/ConnectCommand.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/PacketType.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/message/ChatMessage.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/io/PacketReceiver.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/packet/Packet.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Common/src/com/chat/message/ErrorMessage.java</file>
