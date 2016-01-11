@@ -66,13 +66,13 @@ public class UserConnectionTable
         if(result == null)
             return false;
         
-        m_users.remove(oldData.getUsername());
-        if(newData == null || newData.getUsername() == null || "".equals(newData.getUsername()))
-            return false;
         
-        m_users.put(newData.getUsername(), user);
-        user.setUserData(newData);
-        return true;
+        if(addUser(newData, user))
+        {
+            m_users.remove(oldData.getUsername());
+            return true;
+        }
+        return false;
     }
     
     public synchronized boolean removeUser(UserData userData)

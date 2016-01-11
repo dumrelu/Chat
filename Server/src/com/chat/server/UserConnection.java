@@ -192,6 +192,9 @@ public class UserConnection implements PacketReceiverSubscriber
         {
             m_sender.send(new ErrorMessage("Username already taken"));
         }
-        m_table.broadcast(new UpdateMessage(oldUsername, m_userData));
+        else
+        {
+            m_table.broadcast(new UpdateMessage(oldUsername, m_userData));
+        }
     }
 }
