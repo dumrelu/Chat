@@ -31,9 +31,18 @@ public class CommandParser
             return;
         }
         
-        if(line.length() < 2)
-            return;
-        
+        try
+        {
+            parse(line);
+        }
+        catch(Exception e)
+        {
+            System.err.println("Invalid command");
+        }
+    }
+    
+    private void parse(String line) throws Exception
+    {
         int spaceIdx = line.indexOf(" ");
         if(spaceIdx < 0)
             spaceIdx = line.length();
@@ -48,10 +57,15 @@ public class CommandParser
                 break;
             case "msg":
                 int nextSpaceIdx = line.indexOf(" ", spaceIdx+1);
-                m_sender.send(new MessageCommand(line.substring(spaceIdx+1, nextSpaceIdx), line.substring(nextSpaceIdx+1)));
+                String destination = line.substring(spaceIdx+1, nextSpaceIdx);
+                String message = line.substring(nextSpaceIdx+1);
+                if(!message.isEmpty())
+                    m_sender.send(new MessageCommand(destination, message));
                 break;
             case "bcast":
-                m_sender.send(new MessageCommand(line.substring(spaceIdx+1)));
+                String bcast = line.substring(spaceIdx+1);
+                if(!bcast.isEmpty())
+                    m_sender.send(new MessageCommand(bcast));
                 break;
             case "nick":
                 m_sender.send(new UpdateCommand(new UserData(line.substring(spaceIdx+1))));
@@ -59,6 +73,8 @@ public class CommandParser
             case "quit":
                 m_sender.send(new QuitCommand());
                 break;
+            default:
+                throw new Exception();
         }
         
         m_lastCommand = command;
