@@ -194,6 +194,7 @@ public class GUI extends javax.swing.JFrame {
         
         try {
             doc.insertString(doc.getLength(), message + "\n", style);
+            chatTextPane.scrollRectToVisible(new Rectangle(0, chatTextPane.getBounds(null).height,1,1));
         } catch (BadLocationException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
