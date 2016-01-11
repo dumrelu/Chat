@@ -35,13 +35,7 @@ public class SenderSubscriber implements PacketSenderSubscriber
             case COMMAND_UPDATE:
                 String oldUsername = m_username;
                 m_username = ((UpdateCommand) packet).getUserData().getUsername();
-                if(oldUsername == null)
-                {
-                     m_gui.addMessage("Connecting as " + m_username + "...", GUI.INFO);
-                     m_gui.getSender().send(new ListCommand());
-                }
-                else
-                    m_gui.addMessage("Changin username from " + oldUsername + " to " + m_username, GUI.INFO);
+                m_gui.addMessage("Changin username from " + oldUsername + " to " + m_username, GUI.INFO);
                 break;
             case COMMAND_QUIT:
                 m_gui.addMessage("Quitting...", GUI.INFO);
