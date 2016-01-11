@@ -183,7 +183,7 @@ public class UserConnection implements PacketReceiverSubscriber
     {
         if(m_userData == null)
         {
-            m_sender.send(new ErrorMessage("You need to pick a username first"));
+            onConnectCommand(new ConnectCommand(update.getUserData()));
             return;
         }
         
