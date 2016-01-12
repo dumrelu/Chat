@@ -9,6 +9,7 @@ import com.chat.message.UpdateMessage;
 import com.chat.packet.Packet;
 import com.chat.packet.io.PacketReceiverSubscriber;
 import com.chat.user.UserData;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -35,7 +36,9 @@ public class ReceiverSubscriber implements PacketReceiverSubscriber
             result += " to ";
             result += to.equals(m_username) ? "me" : to;
         }
-        result += "[" + date.toString() + "]: ";
+        
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        result += "[" + sd.format(date) + "]: ";
         result += message;
         
         return result;
