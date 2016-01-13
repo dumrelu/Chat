@@ -5,7 +5,7 @@
             <url>src/com/chat/client/GUI.java</url>
             <bookmark id="1">
                 <name/>
-                <line>255</line>
+                <line>256</line>
                 <key/>
             </bookmark>
         </file>
@@ -19,6 +19,11 @@
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/ReceiverSubscriber.java</file>
             <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/SenderSubscriber.java</file>
         </group>
-        <group name="Chat"/>
+        <group name="Chat">
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/ReceiverSubscriber.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/SenderSubscriber.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/GUI.java</file>
+            <file>file:/C:/Users/dumre_000/Google%20Drive/School/An4,%20Sem1/SistemeDistribuite/Chat/Client/src/com/chat/client/CommandParser.java</file>
+        </group>
     </open-files>
 </project-private>
