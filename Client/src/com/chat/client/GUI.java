@@ -40,13 +40,13 @@ public class GUI extends javax.swing.JFrame {
      * @param sender
      * @param receiver
      */
-    public GUI(PacketSender sender, PacketReceiver receiver) {
+    public GUI() {
         initComponents();
         messageTextPane.requestFocus();
         
-        this.sender = sender;
-        this.receiver = receiver;
-        this.parser = new CommandParser(sender);
+        //this.sender = sender;
+        //this.receiver = receiver;
+        this.parser = new CommandParser(this);
         
         this.model = new DefaultListModel();
         this.userList.setModel(model);
@@ -70,7 +70,7 @@ public class GUI extends javax.swing.JFrame {
         StyleConstants.setForeground(style, Color.BLUE);
         styleMap.put(PRIVATE, style);
         
-        addMessage("Use /connect \"username\" to connect to the server.", INFO);
+        addMessage("Use /connect \"username\" \"host=localhost\" \"port=1616\" to connect to the server.", INFO);
     }
     
     public PacketSender getSender()
@@ -78,9 +78,19 @@ public class GUI extends javax.swing.JFrame {
         return sender;
     }
     
+    public void setSender(PacketSender sender)
+    {
+        this.sender = sender;
+    }
+    
     public PacketReceiver getReceiver()
     {
         return receiver;
+    }
+    
+    public void setReceiver(PacketReceiver receiver)
+    {
+        this.receiver = receiver;
     }
 
     /**
@@ -257,8 +267,10 @@ public class GUI extends javax.swing.JFrame {
 
     public void close()
     {
-        sender.stop();
-        receiver.stop();
+        if(sender != null)
+            sender.stop();
+        if(receiver != null)
+            receiver.stop();
         System.exit(0);
     }
     
@@ -292,26 +304,8 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    Socket socket = new Socket("localhost", Constants.PORT);
-                    PacketSender sender = new PacketSender(socket);
-                    PacketReceiver receiver = new PacketReceiver(socket);
-                    
-                    sender.start();
-                    receiver.start();
-                    
-                    GUI gui = new GUI(sender, receiver);
-                    
-                    SenderSubscriber ss = new SenderSubscriber(gui);
-                    sender.subscribe(ss);
-                    
-                    ReceiverSubscriber rs = new ReceiverSubscriber(gui);
-                    receiver.subscribe(rs);
-                    
-                    gui.setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                GUI gui = new GUI();
+                gui.setVisible(true);
             }
         });
     }
@@ -327,8 +321,8 @@ public class GUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private final StyledDocument doc;
     private final Map<Integer, Style> styleMap;
-    private final PacketSender sender;
-    private final PacketReceiver receiver;
+    private PacketSender sender;
+    private PacketReceiver receiver;
     private final CommandParser parser;
     private final DefaultListModel model;
 }
