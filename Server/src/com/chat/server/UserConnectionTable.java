@@ -33,7 +33,8 @@ public class UserConnectionTable
         
         m_users.put(userData.getUsername(), user);
         user.setUserData(userData);
-        System.out.println("User " + userData.getUsername() + " authenticated.");
+        System.out.println("User " + userData.getUsername() + " authenticated.("
+        + user.getSocket().getInetAddress() + ")");
         return true;
     }
     
